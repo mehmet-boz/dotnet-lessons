@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Lesson Page";
+}
+
+<h1>Lessons</h1>
+
+<ol>
+    @foreach (var item in ViewBag.lessons)
+    {
+        <li><a href="#"> @item</a></li>
+    }
+</ol>
