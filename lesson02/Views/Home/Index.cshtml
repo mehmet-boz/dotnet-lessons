@@ -2,7 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <h1 class="display-4">Welcome</h1>
-<h1 class="center-text text-success"> hüseyin çınar </h1>
+<h1 class="
 
+center-text 
+@(ViewBag.number%2==0 ? "text-success" : "text-danger")
+
+">
+    @ViewBag.number hüseyin çınar </h1>

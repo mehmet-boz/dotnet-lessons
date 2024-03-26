@@ -1,0 +1,16 @@
+﻿@model IEnumerable<lesson04.Models.Entities.Urunler>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@foreach (var urun in Model)
+{
+    <div class="bg-light p-3 border mb-3">
+        <span class="text-success mb-5">@urun.UstBaslik</span>
+        <h3>@urun.Baslik</h3>
+        <div> @urun.Icerik</div>
+    </div>
+}

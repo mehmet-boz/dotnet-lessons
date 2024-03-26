@@ -1,0 +1,247 @@
+/* Poppins font family */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all .1s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #fafafa;
+}
+
+.row {
+    width: 100%;
+}
+
+
+
+.footer-left,
+.footer-right {
+    width: 100%;
+    height: 205px;
+    float: left;
+}
+
+.footer-left {
+    background-color: #D9D9D9;
+}
+
+.footer-right {
+    background-color: #8F8F8F;
+}
+
+/* Topbar */
+.topbar {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 24px;
+}
+
+
+.menu ul li {
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu ul li a:hover,
+a.active {
+    color: #B2215A !important;
+    border-bottom: 4px solid #B2215A;
+}
+
+/* Slider section */
+
+.slider {
+    width: 70%;
+    float: left;
+    padding: 7px;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 30%;
+    height: auto;
+    float: left;
+    font-family: 'Poppins', sans-serif;
+    padding: 7px 7px 7px 35px;
+
+}
+
+.sidebar h3 {
+    font-size: 30px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-decoration-color: #B2215A;
+    text-decoration-thickness: 4px;
+}
+
+.sidebar p {
+    font-size: 18px;
+    color: #3C3B3B;
+    padding: 14px 0;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+}
+
+/* Flex boxes */
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.box {
+    height: 303px;
+    flex-basis: 31%;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.orange-box {
+    background-color: #EE7837;
+}
+
+.gray-box {
+    background-color: #CACACA;
+}
+
+.lime-box {
+    background-color: #D6FB68;
+}
+
+.box .box-head {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon-holder {
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.icon-holder img {
+    align-self: flex-start;
+}
+
+.info {
+    display: flex;
+    gap: 15px;
+
+}
+
+.icon-holder i {
+    font-size: 22px;
+}
+
+.head-text {
+    flex-grow: 1;
+    color: #fff;
+}
+
+.box .box-footer {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.box-footer i {
+    font-size: 36px;
+    align-self: flex-end;
+}
+
+.dark-text {
+    color: #000;
+}
+
+.box-content h3 {
+    font-size: 24px;
+    color: #444;
+}
+
+.label {
+    margin-left: auto;
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.elips {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-left: -20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elips:first-child {
+    margin-left: 0px;
+}
+
+.box-content {
+    display: flex;
+}
+
+.elips i {
+    font-size: 28px;
+    color: #fff;
+}
+
+.box {
+    transition: transform .2s;
+    /* kutunun geçişlerinin animasyonlu 
+    bir şekilde olmasını sağladık */
+}
+
+.box:hover {
+    transform: scale(1.1);
+    /* Üzerinde gelindiğinde kutunun yüzde 10 büyümesini sağladık */
+    box-shadow: 0 0 40px #0000003f;
+}
