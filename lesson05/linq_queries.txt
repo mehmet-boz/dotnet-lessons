@@ -1,0 +1,6 @@
+1 Kitapları en son yayınlanandan, en eskiye doğru sıralı bir biçimde getiren sorgu
+2 Kitaplardan en son eklenen 10 tanesini getiren sorgu
+3 Kitaplardan yazarId'si 5 olan kitapları getiren sorgu
+4 Sayfa sayısı 100 ile 200 arasında olan kitapları getiren sorgu
+5 Sayfa sayısı ortalama sayfa sayısından yüksek olan kitapları getiren sorgu
+6 Yayın yılı 2022 olan kitapları listeleyen sorgu

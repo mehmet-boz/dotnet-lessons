@@ -16,10 +16,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        // SELECT * FROM kitaplar WHERE yazarId=20;
+
         var KitapListesi = new List<BookVM>();
         KitapListesi = (from x in db.Kitaplars
-                        orderby x.Adi
+                        orderby x.YayinTarihi descending
                         select new BookVM
                         {
                             Id = x.Id,
@@ -28,20 +28,94 @@ public class HomeController : Controller
                             Dili = x.DilId.ToString(),
                             Resim = x.Resim,
                             YayinTarihi = x.YayinTarihi.ToShortDateString()
-                        }).ToList();
+                        }).Take(10).ToList(); //sonuçları sınırlama - limit
 
+        // KitapListesi = (from x in db.Kitaplars
+        //                 orderby x.Adi //sıralama
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList(); //listeye dönüştürme
+
+        // KitapListesi = (from x in db.Kitaplars
+        //                 orderby x.YayinTarihi descending //azalan sıralama
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList();
+
+        // KitapListesi = (from x in db.Kitaplars
+        //                 where x.YazarId == 5 //seçme
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList();
+
+        // KitapListesi = (from x in db.Kitaplars
+        //                 where x.SayfaSayisi > 99 && x.SayfaSayisi < 201 //between
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList();
+
+        // KitapListesi = (from x in db.Kitaplars
+        //                 let ortalama = db.Kitaplars.Average(x => x.SayfaSayisi) //sorgu içinde sorgu
+        //                 where x.SayfaSayisi > ortalama
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList();
+
+        // KitapListesi = (from x in db.Kitaplars
+        //                 let yil = x.YayinTarihi.Year //sorgu içinde değişken
+        //                 where yil == 2022
+        //                 select new BookVM
+        //                 {
+        //                     Id = x.Id,
+        //                     Adi = x.Adi,
+        //                     YazarAdi = x.YazarId.ToString(),
+        //                     Dili = x.DilId.ToString(),
+        //                     Resim = x.Resim,
+        //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
+        //                 }).ToList();
         return View(KitapListesi);
     }
 
-    public IActionResult Privacy()
+
+    [Route("/Kitap/{id}")]
+    public IActionResult KitapDetay(int id)
     {
-        return View();
+        var kitap = (from x in db.Kitaplars
+                     where x.Id == id
+                     select x).FirstOrDefault();
+        return View(kitap);
     }
 
-    public IActionResult Contact()
-    {
-        return View();
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
