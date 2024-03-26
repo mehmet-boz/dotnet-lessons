@@ -1,0 +1,19 @@
+﻿@model List<lesson05.Models.ViewModels.BookVM>
+
+@foreach (var book in Model)
+{
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col-6 p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary-emphasis">@book.YazarAdi</strong>
+                <h4 class="mb-0">@book.Adi</h4>
+                <div class="mb-1 text-body-secondary">@book.YayinTarihi</div>
+                <span class="badge text-bg-dark align-self-start">@book.Dili</span>
+
+            </div>
+            <div class="col-6 d-none d-lg-block">
+                <img src="/images/book/@book.Resim" class="img-fluid" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+}
