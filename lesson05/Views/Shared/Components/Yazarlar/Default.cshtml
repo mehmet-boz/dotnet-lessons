@@ -1,0 +1,11 @@
+@model List<lesson05.Models.ViewModels.YazarlarSidebarVM>
+
+<div class="p-4">
+    <h4 class="fst-italic">Yazarlar</h4>
+    <ol class="list-unstyled mb-0">
+        @foreach (var yazar in Model)
+        {
+            <li><a href="#">@yazar.YazarAdi</a></li>
+        }
+    </ol>
+</div>

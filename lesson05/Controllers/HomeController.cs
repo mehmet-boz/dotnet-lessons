@@ -19,13 +19,15 @@ public class HomeController : Controller
 
         var KitapListesi = new List<BookVM>();
         KitapListesi = (from x in db.Kitaplars
+                        join y in db.Yazarlars on x.YazarId equals y.Id
+                        join d in db.Dillers on x.DilId equals d.Id
                         orderby x.YayinTarihi descending
                         select new BookVM
                         {
                             Id = x.Id,
                             Adi = x.Adi,
-                            YazarAdi = x.YazarId.ToString(),
-                            Dili = x.DilId.ToString(),
+                            YazarAdi = y.Adi + " " + y.Soyadi,
+                            Dili = d.DilAdi,
                             Resim = x.Resim,
                             YayinTarihi = x.YayinTarihi.ToShortDateString()
                         }).Take(10).ToList(); //sonuçları sınırlama - limit

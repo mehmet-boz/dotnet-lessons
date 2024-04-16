@@ -93,22 +93,7 @@
             </div>
         </header>
 
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-            <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis active" href="/">Anasayfa</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Roman</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Hikaye</a>
-            </nav>
-        </div>
+        @await Component.InvokeAsync("Navbar")
     </div>
 
     @* Body *@
@@ -175,23 +160,7 @@
                         </ul>
                     </div>
 
-                    <div class="p-4">
-                        <h4 class="fst-italic">Archives</h4>
-                        <ol class="list-unstyled mb-0">
-                            <li><a href="#">March 2021</a></li>
-                            <li><a href="#">February 2021</a></li>
-                            <li><a href="#">January 2021</a></li>
-                            <li><a href="#">December 2020</a></li>
-                            <li><a href="#">November 2020</a></li>
-                            <li><a href="#">October 2020</a></li>
-                            <li><a href="#">September 2020</a></li>
-                            <li><a href="#">August 2020</a></li>
-                            <li><a href="#">July 2020</a></li>
-                            <li><a href="#">June 2020</a></li>
-                            <li><a href="#">May 2020</a></li>
-                            <li><a href="#">April 2020</a></li>
-                        </ol>
-                    </div>
+                    @await Component.InvokeAsync("Yazarlar")
 
                     <div class="p-4">
                         <h4 class="fst-italic">Elsewhere</h4>
