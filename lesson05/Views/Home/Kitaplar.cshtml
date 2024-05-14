@@ -1,5 +1,9 @@
 ﻿@model List<lesson05.Models.ViewModels.BookVM>
 
+
+<div class="rounded bg-dark py-4 my-5">
+    <h3 class="text-light">@ViewBag.PageTitle</h3>
+</div>
 @foreach (var book in Model)
 {
     <div class="col-md-6">
@@ -9,11 +13,11 @@
                 <a href="/Kitap/@book.Id" class="text-decoration-none mb-5 fs-5 text-dark ">
                     @book.Adi
                 </a>
-                
-                    <div class="mb-1 text-body-secondary">@book.YayinTarihi</div>
-                    <span class="badge text-bg-dark align-self-start">@book.Dili</span>
-                    <strong class="d-inline-block mb-2 fs-7 text-primary-emphasis">@book.YazarAdi</strong>
-              
+
+                <div class="mb-1 text-body-secondary">@book.YayinTarihi</div>
+                <span class="badge text-bg-dark align-self-start">@book.Dili</span>
+                <strong class="d-inline-block mb-2 fs-7 text-primary-emphasis">@book.YazarAdi</strong>
+
             </div>
             <div class="col-6 d-none d-lg-block">
                 <a href="/Kitap/@book.Id">

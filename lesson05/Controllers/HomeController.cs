@@ -16,7 +16,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
         var KitapListesi = new List<BookVM>();
         KitapListesi = (from x in db.Kitaplars
                         join y in db.Yazarlars on x.YazarId equals y.Id
@@ -106,6 +105,75 @@ public class HomeController : Controller
         //                     YayinTarihi = x.YayinTarihi.ToShortDateString()
         //                 }).ToList();
         return View(KitapListesi);
+    }
+
+    [Route("/Kitaplar")]
+    [Route("/Kitaplar/Yazar/{yazarId?}")]
+    [Route("/Kitaplar/Tur/{turId?}")]
+    public IActionResult Kitaplar(int? yazarId, int? turId)
+    {
+        var kitaplar = new List<BookVM>();
+        string title = "";
+
+        if (yazarId == null && turId == null)
+        {
+            kitaplar = (from x in db.Kitaplars
+                        join y in db.Yazarlars on x.YazarId equals y.Id
+                        join d in db.Dillers on x.DilId equals d.Id
+                        select new BookVM
+                        {
+                            Id = x.Id,
+                            Adi = x.Adi,
+                            YazarAdi = y.Adi + " " + y.Soyadi,
+                            Dili = d.DilAdi,
+                            Resim = x.Resim,
+                            YayinTarihi = x.YayinTarihi.ToShortDateString()
+                        }).ToList();
+            title = "Tüm Kitaplar";
+        }
+
+        if (yazarId != null)
+        {
+            kitaplar = (from x in db.Kitaplars
+                        join y in db.Yazarlars on x.YazarId equals y.Id
+                        join d in db.Dillers on x.DilId equals d.Id
+                        where x.YazarId == yazarId
+                        orderby x.YayinTarihi descending
+                        select new BookVM
+                        {
+                            Id = x.Id,
+                            Adi = x.Adi,
+                            YazarAdi = y.Adi + " " + y.Soyadi,
+                            Dili = d.DilAdi,
+                            Resim = x.Resim,
+                            YayinTarihi = x.YayinTarihi.ToShortDateString()
+                        }).ToList();
+            var yazar = db.Yazarlars.Where(y => y.Id == yazarId).FirstOrDefault();
+            title = yazar.Adi + " " + yazar.Soyadi + " yazarına ait kitaplar";
+        }
+
+        if (turId != null)
+        {
+            kitaplar = (from x in db.Turlertokitaplars
+                        join k in db.Kitaplars on x.KitapId equals k.Id
+                        where x.TurId == turId
+                        orderby k.YayinTarihi descending
+                        select new BookVM
+                        {
+                            Id = k.Id,
+                            Adi = k.Adi,
+                            YazarAdi = "Örnek Yazar",
+                            Dili = "Türkçe",
+                            Resim = k.Resim,
+                            YayinTarihi = k.YayinTarihi.ToShortDateString()
+                        }).Distinct().ToList();
+
+            var tur = db.Turlers.Where(y => y.Id == turId).FirstOrDefault();
+            title = tur.TurAdi + " türüne ait kitaplar";
+        }
+
+        ViewBag.PageTitle = string.Format("{0} - {1}", title, kitaplar.Count());
+        return View(kitaplar);
     }
 
 
