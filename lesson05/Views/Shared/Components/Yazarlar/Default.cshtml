@@ -5,7 +5,13 @@
     <ol class="list-unstyled mb-0">
         @foreach (var yazar in Model)
         {
-            <li><a href="/Kitaplar/Yazar/@yazar.Id">@yazar.YazarAdi</a></li>
+            <li class="my-2">
+                <a href="/Kitaplar/Yazar/@yazar.Id" class="btn btn-outline-primary">
+                    @yazar.YazarAdi <span class="badge text-bg-primary">@yazar.KitapSayisi</span>
+                </a>
+
+            </li>
+
         }
     </ol>
 </div>

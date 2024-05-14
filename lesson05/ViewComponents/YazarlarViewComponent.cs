@@ -19,10 +19,15 @@ public class YazarlarViewComponent : ViewComponent
     {
         var yazarlar = (from x in db.Yazarlars
                         select new YazarlarSidebarVM
-                        {
+                        {   
                             Id = x.Id,
-                            YazarAdi = x.Adi + " " + x.Soyadi
-                        }).ToList();
+                            YazarAdi = x.Adi + " " + x.Soyadi,
+                            KitapSayisi = (
+                                from k in db.Kitaplars
+                                where k.YazarId == x.Id
+                                select k
+                            ).Count()
+                        }).OrderByDescending(a => a.KitapSayisi).Take(10).ToList();
 
         return View(yazarlar);
     }
